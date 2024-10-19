@@ -433,6 +433,13 @@ PROGRAM a1 (input,output);
                 ' is scheduled for ', Total:1, ' hours. <<<<')
         END; { DoTotal }
 
+
+    procedure TForm1.FormCreate(Sender: TObject);
+       const
+           n = %01101100 {binary} + &01234567 {octal} + $FF00 {hex};
+       begin
+       end;
+
     {*****************************************************************
      * Main line.
      *****************************************************************}

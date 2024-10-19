@@ -15,7 +15,7 @@ module Rouge
 
       keywords = %w(
         absolute abstract all and and_then array as asm assembler attribute
-        begin bindable case class const constructor delay destructor div do
+        begin bindable case class const constructor delay destructor dispinterface div do
         downto else end except exit export exports external far file finalization
         finally for forward function goto if implementation import in inc index
         inherited initialization inline interface interrupt is label library
@@ -53,9 +53,12 @@ module Rouge
 
       state :root do
         mixin :whitespace
-
-        rule %r{((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?}, Num
+        # octal, binary and hex constants including their prefix
+        # fix for issue 1841
+        rule %r/&[0-7]+/, Num::Oct
+        rule %r/%[01]+/, Num::Bin
         rule %r/\$[0-9A-Fa-f]+/, Num::Hex
+        rule %r{((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?}, Num
         rule %r{[~!@#\$%\^&\*\(\)\+`\-={}\[\]:;<>\?,\.\/\|\\]}, Punctuation
         rule %r{'([^']|'')*'}, Str
         rule %r/(true|false|nil)\b/i, Name::Builtin

@@ -1,0 +1,415 @@
+﻿ID=WIEHL
+Platform=ANDROID
+AppCountry=Germany
+AppCultureInfo=de-DE
+
+; ****************************
+; *** General app settings ***
+; ****************************
+TicketStateSelectionOnFinish=yes
+; SelectAllOnFocus=yes
+
+CashPayer=no
+General=yes
+
+; *** Konfiguration des Hauptmenues mit zwei Spalten:
+MainMenuEntries=PARKINGTICKET,GENERALTICKET|NINO,NINONI|TOWING,MULTITOWING|BROWSE,NOTES|PERMISSIONLIST,LPR|INFO,INFOPRN|TASKS|LOGOUT
+BrowserMenuEntries=PARKINGTICKETS|GENERALTICKETS|CASHPAYERS|PRENOTES|FINALPHOTOSMISSING|NOTES|WARNINGS|CARDETECTED|H24PARKINGS|BACK
+InitialField=FIRSTEMPTY
+
+; *************************
+; *** Security settings ***
+; *************************
+; *** Zeit ohne Benutzeraktivitaet, nach der ein automatischer
+; *** Logout durchgefuehrt wird.
+; *** Default ist unendlich = kein automatischer logout
+; *** Wert ist in Sekunden: 1800 = 30 Min. 
+ApplicationInactiveTimeOut=900
+
+; *** Nur Passworte fuer den Login?
+; PWLoginOnly=no
+
+; *** Wenn gehashtes Passwort, dann auch noch gegen den Hash
+; *** fuer eine Version in Grossbuchstaben pruefen?
+; LoginHashFromUppercasePass=yes
+
+; *** Wenn gehashtes Passwort, welcher Hashtyp? 
+; *** Gueltige Werte sind bcrypt und sha1
+; HashType=bcrypt
+
+; *** Festlegen der Mindestanzahl von Grossbuchstaben (A1), 
+; *** Kleinbuchstaben (a1), Ziffern (D1) und Sonderzeichen (S1)
+; *** in einem Passwort. Optional kann eine Mindestlaenge (L4)
+; *** angegeben werden wenn sie groesser sein soll als die Summe
+; *** der Mindestanzahlen.
+; PasswordPolicy=A1a1D1S1L4
+
+; *** Anmeldung per admin/setup erlaubt?
+; AllowInternalAdmin=yes
+
+; *** Soll nach dem Login eine Unterschrift erfasst werden?
+; LoginSignature=no
+; SignatureHeight=200
+; SignatureWidth=250
+
+; ******************************
+; *** Ticket number settings ***
+; ******************************
+
+; *** Ticketnummerntabelle nutzen?
+; *** Dieser Wert sollte nicht geaendert werden, da es unter
+; *** Android *keine* Moeglichkeit gibt, Ticketnummern manuell
+; *** auf dem Geraet zu vergeben.
+UseTicketNumberTable=yes
+
+; *** Sollen bei allgemeinen OWIs Ticketnummern vergeben werden?
+; GeneralTicketNumber=yes
+
+; *** Soll den gezogenen Ticketnummern ein Praefix oder Suffix
+; *** hinzugefuegt werden?
+; *** Der Prae-/Suffix kann folgende variable Bestandteile enthalten:
+; *** [OFFICER] - the id of the offcer issing the ticket
+; *** [COMMAND] - the officers command
+; *** [DD] - the current day
+; *** [MM] - the current month
+; *** [YY] - the current year (two digits)
+; *** [YYYY] - the current year (four digits)
+; *** [HH] - the current hour
+; *** [NN] - the current minute
+; *** Beispiel:
+; *** TicketNumberPrefix=NE-[OFFICER]-[YYYY][MM][DD]-
+; TicketNumberPrefix=
+; TicketNumberSuffix=
+
+; *** Ticketnummern vergeben auch wenn nicht gedruckt wird?
+TicketNumWithoutPrinting=no
+
+; *** Neue Ticketnummer vergeben, wenn Ticket geaendert wird?
+; *** Gueltige Werte sind yes, no oder ask.
+NewTicketNumberOnModify=yes
+
+; *** Neue Ticketnummer vergeben, wenn Ticket erhoeht wird?
+; *** Gueltige Werte sind yes, no oder ask.
+; *** Default is der Wert von NewTicketNumberOnModify:
+NewTicketNumberOnRaise=ask
+TicketNumForTowingPrenotes=yes
+
+; NewTicketNumberOnTowing=yes
+TicketNumberTypeForParking=1
+TicketNumberTypeForGeneral=2
+TicketNumberTypeForTowing=1
+TicketNumberRangeForTowing=1
+; WarningsHaveTicketNumbers=no
+; UserGroupWithTowingPrivilege=1
+; *** Modulo-Algorithmus:
+Modulo=10BAMBERG
+; ModuloIncludingPrefAndSuff=no
+; ModuloCheck=no
+
+; ********************
+; *** Edit tickets ***
+; ********************
+; *** Die folgenden Eintraege aktivieren bzw. deaktivieren Felder in der Erfassungsliste.
+; *** Die folgenden Felder sind standardmaessig deaktiviert und koennen durch hinzufuegen 
+; *** zu den entsprechenden Enabled-Eintraegen aktiviert werden.
+; *** fuer Kunden mit Bezirks-Auswahl:
+; *** xyzEnabled=DISTRICT|
+; *** fuer Kunden mit Bis-Zeit-Eingabe:
+; *** xyzEnabled=[TODATETIME]|TO_DATE|TO_TIME|
+; *** fuer Kunden mit Cash=yes:
+; *** xyzEnabled=[CASHPAYER]|_CASHPAYER|
+; *** fuer Kunden mit Uebersichtsphotos:
+; *** xyzEnabled=_OVERVIEWPHOTOS|
+; *** Schaltflaeche fuer ANPR-Scan in das Kennzeichenfeld:
+; *** xyzEnabled=_PLATESCAN|
+
+; *** Die folgenden Felder sind standardmaessig aktiviert und koennen durch hinzufuegen 
+; *** zu den entsprechenden Disabled-Eintraegen deaktiviert werden.
+; *** Schaltflaeche fuer Online-Check des Kennzeichens:
+; *** xyzDisabled=ONLINECHECK|
+; *** Schaltflaeche fuer Photos:
+; *** xyzDisabled=_PHOTOS|
+; *** Schaltflaeche fuer Skizzen:
+; *** xyzDisabled=_SKETCH|
+; *** Achtung: das SKETCH Feld (ohne Unterstrich) muss immer deaktiviert sein!
+
+FieldDefsEnabled=_OVERVIEWPHOTOS|
+FieldDefsDisabled=DISTRICT|PHOTONO1|FROM_PHOTO|EVIDENCE2|OTHEREVIDENCE|_SKETCH|SKETCH|_PLATESCAN|ONLINECHECK|TOWED|__GROUP_TOW|
+; FieldDefsReadOnly=
+
+FieldDefsGeneralEnabled=_OVERVIEWPHOTOS|
+FieldDefsGeneralDisabled=DISTRICT|PHOTONO1|FROM_PHOTO|EVIDENCE2|OTHEREVIDENCE|_SKETCH|SKETCH|_PLATESCAN|ONLINECHECK|
+; FieldDefsGeneralReadOnly=
+
+FieldDefsTowEnabled=_OVERVIEWPHOTOS|
+FieldDefsTowDisabled=DISTRICT|PHOTONO1|FROM_PHOTO|EVIDENCE2|OTHEREVIDENCE|_SKETCH|SKETCH|[TOWWITNESS]|TOWWITNESS|TOWWITNESS2|ONLINECHECK|
+; FieldDefsTowReadOnly=
+
+FieldDefsMultiTowEnabled=_OVERVIEWPHOTOS|
+FieldDefsMultiTowDisabled=DISTRICT|PHOTONO1|FROM_PHOTO|EVIDENCE2|OTHEREVIDENCE|_SKETCH|SKETCH|[TOWWITNESS]|TOWWITNESS|TOWWITNESS2|ONLINECHECK|
+; FieldDefsMultiTowReadOnly=
+
+FieldDefsNotebookEnabled=
+FieldDefsNotebookDisabled=DISTRICT|PHOTONO1|FROM_PHOTO|_PLATESCAN|_SKETCH|SKETCH|ONLINECHECK|
+; FieldDefsNotebookreadOnly=
+
+FieldDefsPrenoteEnabled=_OVERVIEWPHOTOS|
+FieldDefsPrenoteDisabled=DISTRICT|TOWED|__GROUP_TOW|HEARED|WITNESS|FROM_PHOTO|PHOTONO1|_PLATESCAN|_SKETCH|SKETCH|ONLINECHECK|
+; FieldDefsPrenoteReadOnly=
+
+PrenoteToValidReadOnlyFields=PLATETYPE|PLATE
+PrenoteEditReadOnlyFields=PLATETYPE|PLATE
+ValidEditReadOnlyFields=PLATETYPE|PLATE
+
+; *** Zweite Eingabe des Kennzeichens vorwaerts anstatt rueckwaerts?
+PlateCheck=no
+; *** Minimale Anzahl von Ventilen wenn Ventile Pflichtfelder sind?
+MinValveCount=2
+TatmehrheitBetragsgrenze=55
+MaxCashAmount=55
+; DupeCheckWithoutStreet=no
+
+RemarkEditMax=5
+ListStreetInfoColumn=PLZ
+
+; ***********************
+; *** Prenote related ***
+; ***********************
+; *** Anzeige der Anzahl von faelligen Vornotierungen in der Erfassung:
+; PrenoteTicketsIndicator=no
+; *** Vornotierung erstellen ohne all Pflichtfelder einzugeben:
+; AllowPrenoteFromIncompleteTicket=yes 
+
+; ***********************
+; *** Ticket browsing ***
+; ***********************
+; *** Konfiguration des Kontextmenues der Eintraege in der Browserliste:
+; *** Folgende Operationen sind (abhaengig von der Art des Eintrags) gueltig:
+; *** E - Ticket aendern
+; *** N - Kopie des Tickets erzeugen und aendern
+; *** I - Eintrag stornieren
+; *** R - Bemerkungen hinzufuegen ohne sonst etwas im Ticket zu aendern
+; *** C - Online-Pruefung des im Ticket enthaltenen Kennzeichens
+; *** P - Ticket drucken
+; *** V - Ticket ansehen, keine Aenderungen moeglich
+; *** T - TO_TIME auf aktuelle Zeit setzen (nur bei gueltigen Tickets)
+; *** O - Tatbestand erhoehen wenn moeglich (nur bei gueltigen Tickets)
+; *** W - In Warnung umwandeln (nur bei gueltigen Tickets)
+; *** U - Vornotierung in gueltiges Ticket umwandeln wenn alle Pflichtfelder
+; ***     gefuellt sind
+
+Browser.ValidOperations=EIRCPVTO
+Browser.PrenoteOperations=EIRCVU
+Browser.NoteOperations=EIRCPV
+Browser.WarningOperations=EIRCPV
+Browser.DupeOperations=ENC
+
+; *** Notizen Editierbar?
+NoteEdit=yes
+; *** Notizen anzeigen?
+BrowserShowNotes=yes
+; BrowserTimeSek=no
+; OwnTicketsOnly=no
+; OwnTicketsOnlyInList=no
+; TicketListRefresh=yes
+; TicketEditAllowed=yes
+; PrenoteEditAllowed=yes
+NotesSuppressedTypes=LI|LO|PC
+; AllowInvalid=yes|no|GVNW <- Liste von Ticketstati 
+AllowInvalid=no
+OverrideHiddenTicketStates=NAW
+
+TicketCopyToNewTicketFields=_OVERVIEWPHOTOS|STREET|PLZ|SUPPLEMENT|HOUSENO|LOCALDETAIL|PLATETYPE|PLATE|PLATEINFO|PLATEEXPIRY|NATION|DETAIL1A=|DETAIL1B|DETAIL1C|OFFENCE2=|DETAIL2A=|DETAIL2B|DETAIL2C|OFFENCE3=|DETAIL3A=|DETAIL3B|DETAIL3C|VEHTYPE|OTHERVEHTYPE|REGCODETRAILER|VEHMAKE|COLOR|VALVEFR|VALVEBR|VALVEFL|VALVEBL|_PHOTOS|PHOTOS
+
+; ***************************
+; *** Cancel a ticket ***
+; ****************************
+; CancelReasonFields=PLATE
+CancelReasonMinLength=1
+; CancelReasonFreeText=yes
+
+; *****************************
+; *** Save and print ticket ***
+; *****************************
+; Print=yes
+; ConfirmPrintQuestion=yes
+SaveNotPrintedTicket=yes
+; Pruefung auf Ablauf einer Mindestzeit lt. Tatbestandskatalog?
+MinTimeCheck=yes
+; Automatische Aktualisierung der TO_TIME? Wert kann yes, no oder ask sein
+ToTimeAutoUpdate=no
+; Auf moegliche Erhoehung des Tatbestands pruefen?
+AutoCheckForRaise=yes
+
+; TicketListPrintFilter=
+; TicketListPrintFilter=(TICKETSTATE='G') or (TICKETSTATE='B') or (TICKETSTATE='U') or (TICKETSTATE='V')
+TicketListPrintFilter=(TICKETSTATE='G') or (TICKETSTATE='B') or (TICKETSTATE='U') or (TICKETSTATE='V')
+
+
+; Meldung "Ticket gespeichert" anzeigen falls nicht gedruckt wird?
+SaveUnprintedStatusMessage=yes
+
+; PrintShiftReport=no
+; PrintTowReportForPrenotes=no
+
+; ***********************
+; *** Towing settings ***
+; ***********************
+; Tow.Allowed.Standard=no
+; Tow.Allowed.Single=yes
+; Tow.Allowed.Multiple=yes
+; Tow.Type.None=0
+; Tow.Type.Single=1
+; Tow.Type.Multiple=2
+; Tow.Multi.Store.First=TOWDETAIL17
+; Tow.Details.Max=20
+; Anzahl der zu druckenden Abschleppberichte
+; TowReportPrintCount=2
+
+; *******************************
+; *** Barcode reader settings ***
+; *******************************
+; BarcodeReader=no
+; BarcodeDupeCheck=no
+; BarcodeManualInputOnError=no
+; BarcodeRetries=1
+; BarcodeReadTicketNumber=no
+; BarcodeReaderHardware=Imager
+; PrinterBarcodePairing=yes
+; BarcodeReadTicketNumber=false;
+
+; *********************************
+; *** Camera and Photo settings ***
+; *********************************
+; MaxPhotos=6
+PhotoLabelAsButton=yes
+; CameraStartDelay=0
+; DateTimeOnPhoto=yes
+; OverviewPhoto=yes
+; WindscreenPhoto=no
+; PhotoDamageMin=0
+; PhotoDamageMax=12
+; PhotoOffenceMin=0
+; PhotoOffenceMax=6
+; PhotoOverviewMin=0
+; PhotoOverviewMax=2
+; PhotoWindscreenMin=0
+; PhotoWindscreenMax=2
+; PhotoDisplayMaxMsg=yes
+; PhotoQuality=75
+; PhotoScaleType=1
+; PhotoWidthMax=1024
+; PhotosSaveToDisc=no
+; PhotosFileFolder=PolitessPhotos
+PhotosReportPrefix=Photo_Export_Log
+
+; ******************************
+; *** Torch                  ***
+; ******************************
+Torch.Active=yes
+Torch.MaxDuration=10
+
+; ******************************
+;*** Task-Management-Service ***
+; ******************************
+TaskManagementService=no
+TaskManagementServiceUrl=https://weboffice.politess.com/ConsultDemo4/wsTasks.asmx
+TaskManagementServicePwd=CLT98712RXkjh!A
+TaskManagementServicePwd=TRND1520.XCZ-PNSTR
+
+; ***********************************
+; *** Online connections settings ***
+; ***********************************
+OnlineConnection=yes
+; OnlineConnectionDisconnectFromServer=yes
+; OnlineConnectionReceiveTimeout=30
+; OnlineConnectionSendTimeout=30
+
+; OnlineConnectionMobileParking=no
+; OnlineConnectionZoneNeeded=no
+; OnlineConnectionPermissionListDownload=no
+; OnlineConnectionPermissionListDownloadIntervall=5
+; OnlineCheckBeforePrint=no
+; OnlineCheckFieldsToKeepIfCanceled=
+; ListDownloadAddTimeToResult=no
+
+; OnlineConnectionDupeCheck=no
+; OnlineConnectionDupeCheckList=no
+; OnlineConnectionDupeListDownloadIntervall=5
+; OnlineConnectionDupeCheckOwnTickets=yes
+
+OnlineConnectionSpecialPlateCheck=no
+
+OnlineConnectionSendTicketsImmediately=yes
+OnlineConnectionSendCompleteTickets=yes
+OnlineConnectionSentTicketsEditable=yes
+DeleteSentTicketsAfterFullTransfer=yes
+
+; OnlineConnectionPhoneBookDownloadIntervall=5
+
+; OnlineConnectionUpdateServerAddress=82.165.140.19:8171
+; OnlineConnectionUpdateServerAddress=https://politess-de.schweers.com/PORTALWEBDEV/API/PORTAL
+; OnlineConnectionUpdateServerAddress=https://dev.schweers.com:8443/PORTAL/API/PORTAL
+; OnlineConnectionWebApi=no
+
+; ------------------------------------------------------
+; Kunden mit lokalem Portal-Server 
+; 1) senden Tickets NICHT sofort:
+; OnlineConnectionSendTicketsImmediately=no
+; 2) machen Handyparken ueber einen von unseren Servern:
+; OnlineConnectionServerAddress=194.245.154.166:8171
+; ------------------------------------------------------
+
+; ******************************
+; *** Phonebook settings,    ***
+; *** nur mit WebOffice 2.0  ***
+; ******************************
+PhoneBook.Active=no
+PhoneBook.OwnDistrictOnly=yes
+PhoneBook.DownloadInterval=5
+PhoneBook.UseDoubleTap=yes
+PhoneBook.DoubleTapTime=500
+PhoneBook.RemoveNumberIfInactive=yes
+
+; *********************
+; *** ANPR settings ***
+; *********************
+PlateScanOnEnter=yes
+CamCardetActive=yes
+CmcrdPackageName=de.panstreet.politessgo
+; CmcrdMinimumConfidence=55
+; CmcrdMinRepeat=3
+; CmcrdDetectTwoLines=yes
+; CmcrdDetectWhiteOnBlack=no
+; CmcrdNation=DE
+; CmcrdAutoreadMilliSeconds=0
+
+; ContinousAnpr=no
+; ContinousAnprTolerance=3
+
+; currently disabled:
+; CmcrdCheckMode=permission_and_overstay
+; CmcrdCreatePicture=yes
+; CmcrdFineLocation=no
+; CmcrdCoarseLocation=no
+; CmcrdLocationUpdateInterval=0
+; CmcrdLocationUpdateDistance=0
+; CmcrdMaxLocationDistance=0
+; CmcrdUseZone=yes
+; CmcrdShowPlateDelay=15000
+; CmCrdShowInfo=no
+; CmCrdIssueTicket=yes
+; CmcrdBikeMode=yes
+
+; CmcrdOverstayExpiry=0;
+; overstay after 48 hours:
+; CmcrdMaxParking=2880
+; CmcrdServer=http://s339756819.online.de
+; CmcrdUserId=testuser
+; CmcrdPassword=hX_w4qtY
+; CmcrdHistory=no
+; CmcrdMaxRecordsOffline=0
+; CmcrdMaxMinutesOffline=0
+
+
+

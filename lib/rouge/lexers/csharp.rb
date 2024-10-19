@@ -44,6 +44,9 @@ module Rouge
 
       state :whitespace do
         rule %r/\s+/m, Text
+        # Added a quite simple rule for doc comments. Embedded XML is
+        # currently not handled.
+        rule %r(///.*?$), Comment::Doc
         rule %r(//.*?$), Comment::Single
         rule %r(/[*].*?[*]/)m, Comment::Multiline
       end

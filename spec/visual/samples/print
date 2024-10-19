@@ -1,0 +1,101 @@
+!ORIENTATION=0
+!LINEFEEDS=0
+!TEXTCODE=0
+!BLACKMARK=1
+!BM_ADJUSTPOSITION=64
+!ORIGIN=0,120
+!FORMFEEDCHECK=R:FORMFEED.GRF
+
+!USETEMPLATE=R:KIRKLAND.GRF{{
+!TEM=!ORIGIN=0,0
+!TEM=!BM_ADJUSTPOSITION=0
+!TEM=  0, 46,TEXTBOX,sans-serif-condensed,30,CENTER,576,30,WRAP,PARKING CITATION
+!TEM=
+!TEM= 10, 90,TEXT,sans-serif-condensed,22,Issue No.
+!TEM=  4, 78,BOX,570,228
+!TEM=  5, 79,BOX,568,226
+!TEM= 10,124,TEXT,sans-serif-condensed,22,Date
+!TEM=306,124,TEXT,sans-serif-condensed,22,Time
+!TEM= 10,184,TEXT,sans-serif-condensed,22,Officer's Name
+!TEM=306,184,TEXT,sans-serif-condensed,22,Officer ID
+!TEM=420,184,TEXT,sans-serif-condensed,22,Agency
+!TEM=420,206,TEXT,sans-serif,27,PARKING
+!TEM= 10,248,TEXT,sans-serif-condensed,22,Location
+!TEM=
+!TEM= 10,316,TEXT,sans-serif-condensed,30,VIOLATION
+!TEM=  4,346,BOX,570,168
+!TEM=  5,347,BOX,568,166
+!TEM= 10,364,TEXT,sans-serif-condensed,22,Code:
+!TEM= 10,450,TEXT,sans-serif-condensed,22,Due Now
+!TEM=180,450,TEXT,sans-serif-condensed,22,Due After
+!TEM=420,450,TEXT,sans-serif-condensed,22,Mark Time
+!TEM=
+!TEM= 10,524,TEXT,sans-serif-condensed,30,VEHICLE
+!TEM=  4,554,BOX,570,136
+!TEM=  5,555,BOX,568,134
+!TEM= 10,568,TEXT,sans-serif-condensed,22,License No.
+!TEM=180,568,TEXT,sans-serif-condensed,22,State
+!TEM=306,568,TEXT,sans-serif-condensed,22,VIN:
+!TEM= 10,628,TEXT,sans-serif-condensed,22,Make
+!TEM=180,628,TEXT,sans-serif-condensed,22,Model
+!TEM=306,628,TEXT,sans-serif-condensed,22,Style
+!TEM=420,628,TEXT,sans-serif-condensed,22,Color
+!TEM=
+!TEM= 10,700,TEXT,sans-serif-condensed,30,REMARKS
+!TEM=  4,730,BOX,570,156
+!TEM=  5,731,BOX,568,154
+!TEM=  0,898,TEXTBOX,sans-serif-condensed,30,CENTER,576,30,WRAP,RETURN THIS COPY
+!TEM=  0,932,TEXTBOX,sans-serif-condensed,22,CENTER,576,24,WRAP,SEE REVERSE SIDE
+!TEM=}}
+
+// Scaled background does still not work - 2018-04-13
+// -24,-32,BACKGROUND,SCALE=1.0844,Ticket-Header-Kirkland.png
+
+
+// Parking Citation
+// Issue No
+104, 86,TEXT,sans-serif,27,LEFT,{$valueTICKETNO}
+// Date    Time
+ 10,146,TEXT,sans-serif,27,LEFT,{$FORMATDATE(valueTO_DATE|ddd MM/dd/yyyy)}
+306,146,TEXT,sans-serif,27,LEFT,{$valueTO_TIME}
+
+// Officers Name   Officer ID   Agency
+ 10,206,TEXT,sans-serif,27,LEFT,{$username}
+306,206,TEXT,sans-serif,27,LEFT,{$USERID}
+// Location
+ 10,270,TEXTBOX,sans-serif,27,LEFT,539,30,WRAP,{$IF(valueSUPPLEMENT=""|""|valueSUPPLEMENT+" ")}{$valueSTREET}
+
+// -- VIOLATION --
+// Code
+104,360,TEXT,sans-serif,27,LEFT,{$LOOKUP(Tatbestaende|Ziffer|valueOFFENCE1|LongText)}
+ 10,388,TEXTBOX,sans-serif,27,LEFT,544,60,WRAP,{$OFFENCE1TEXT}
+// Time for Due after
+276,450,TEXT,sans-serif-condensed,22,LEFT,{$FORMATDATE(CALCDATE(valueTO_DATE|14|0|0)|MM/dd/yyyy)}
+// Due now     Due after    Mark time
+ 10,472,TEXT,sans-serif,27,LEFT,{$IF(valueAMOUNT="0"|""|"$"+valueAMOUNT+".00")}
+180,472,TEXT,sans-serif,27,LEFT,{$IF(valueAMOUNT="0"|""|"$"+LOOKUP(Tatbestaende|Ziffer|valueOFFENCE1|LatePaymentAmounts)+".00")}
+420,472,TEXT,sans-serif,27,LEFT,{$valueFROM_TIME}
+
+// -- VEHICLE --
+// VIN
+344,568,TEXT,sans-serif-condensed,22,LEFT,{$valuePLATEINFO}
+// Plate  State
+ 10,590,TEXT,sans-serif,27,LEFT,{$valuePLATE}
+180,590,TEXT,sans-serif,27,LEFT,{$valueSTATE}
+// Make  Model Style Color
+ 10,650,TEXT,sans-serif,26,LEFT,{$COPY(valueVEHMAKE|0|10)}
+180,650,TEXT,sans-serif,26,LEFT,{$COPY(valueVEHMODEL|0|7)}
+306,650,TEXT,sans-serif,26,LEFT,{$COPY(valueVEHTYPE|0|6)}
+420,650,TEXT,sans-serif,26,LEFT,{$valueCOLOR}
+
+// -- REMARKS --
+ 10,738,TEXTBOX,sans-serif,27,LEFT,556,60,WRAP,{$valueDETAIL1A}
+ 10,794,TEXTBOX,sans-serif,27,LEFT,556,60,WRAP,{$valueDETAIL1B}
+ 10,850,TEXT,sans-serif,27,LEFT,{$IF(valuePHOTOS=""|""|PHOTOCOUNT+" Photo(s) taken")}
+
+
+2,960,BARCODE,CODE128,INTERNAL,64,MOD=1,ORI=0,SHOWTEXT=NO_TEXT,895*{$PADRIGHT(valueTICKETNO| |10)+FORMATDATE(CALCDATE(valueTO_DATE|21|0|0)|ddMMyyyy)+MULTIPLY(valueAMOUNT|"100"|"0000000")}*
+5,1030,TEXT,TAHOMA,20,LEFT,895*{$PADRIGHT(valueTICKETNO| |11)+FORMATDATE(CALCDATE(valueTO_DATE|21|0|0)|ddMMyyyy)+MULTIPLY(valueAMOUNT|"100"|"0000000")}*
+5,1065,TEXT,TAHOMA:BOLD:ITALIC,22,LEFT,You have 21 days to pay this penalty in
+5,1090,TEXT,TAHOMA:BOLD,22,LEFT,full or to contest this notice in Court.
+5,1115,TEXT,TAHOMA:BOLD,22,LEFT,(see over for more details)

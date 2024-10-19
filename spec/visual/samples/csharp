@@ -7,7 +7,7 @@ class Foo {
   // stuff
 }
 
-////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////// //
 //                                                                            //
 // MIT X11 license, Copyright (c) 2005-2006 by:                               //
 //                                                                            //
@@ -32,7 +32,10 @@ class Foo {
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE  //
 // USE OR OTHER DEALINGS IN THE SOFTWARE.                                     //
 //                                                                            //
-////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////// //
+
+
+
 
 namespace Diva.Core {
         
@@ -70,6 +73,7 @@ namespace Diva.Core {
                                                       SystemType, Depends.Length, RefId);
                         }
                         
+                                        
                         public bool IsUnBoilable (IBoilProvider provider)
                         {
                                 if (Depends.Length == 0)
@@ -177,6 +181,14 @@ namespace Diva.Core {
                         base.Reset ();
                 }
                 
+                /// <summary>
+                /// Gets the id for an object
+                /// </summary>
+                /// <returns>The id.</returns>
+                /// <param name="o">The object to get the id for.</param>
+                /// <remark>
+                /// Simply gets the value from a dictionary
+                /// </remark>
                 public int GetIdForObject (object o)
                 {
                         return objectToId [o];

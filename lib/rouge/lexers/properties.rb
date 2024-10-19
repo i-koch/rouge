@@ -12,9 +12,13 @@ module Rouge
       mimetypes 'text/x-java-properties'
 
       identifier = /[\w.-]+/
+      # identifier = /\w+(\\ \w+)*|[\w.-]+/
 
       state :basic do
-        rule %r/[!#].*?\n/, Comment
+        # Fix for issue 1826. 
+        # Is the check for the end of line intentionally?
+        # rule %r/[!#].*?\n/, Comment
+        rule %r/[!#].*/, Comment
         rule %r/\s+/, Text
         rule %r/\\\n/, Str::Escape
       end

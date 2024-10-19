@@ -1,0 +1,8 @@
+; A simple coment line 
+
+AppCultureInfo = de-DE
+ForceFileProvider=no
+NewTicketNumberOnModify=ask
+BrowserMenuEntries=PARKINGTICKETS|GENERALTICKETS|CASHPAYERS|VALIDTOWINGS|
+                   PRENOTEDTOWINGS|PRENOTES|FINALPHOTOSMISSING|NOTES|
+                   WARNINGS|CARDETECTED|H24PARKINGS|BACK
