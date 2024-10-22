@@ -67,6 +67,7 @@ module Rouge
       end
 
       disambiguate '*.cfg' do
+        next Cfg if matches?(/^\s*ID\s*=/)
         next CiscoIos if matches?(/\A\s*(version|banner|interface)\b/)
 
         INI

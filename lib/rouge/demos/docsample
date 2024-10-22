@@ -1,0 +1,26 @@
+﻿
+; ****************************
+; ***     cfg settings     ***
+; ****************************
+TicketStateSelectionOnFinish=yes
+
+MainMenuEntries = PARKINGTICKET,GENERALTICKET|NINO,NINONI|
+                  TOWING,MULTITOWING|BROWSE,NOTES|PERMISSIONLIST,LPR|
+                  INFO,INFOPRN|TASKS|LOGOUT
+
+TicketNumWithoutPrinting=no
+NewTicketNumberOnModify=yes
+NewTicketNumberOnRaise=ask
+ApplicationInactiveTimeOut=900
+
+PhoneBook.Active=no
+PhoneBook.OwnDistrictOnly=yes
+PhoneBook.DownloadInterval=5
+
+CmcrdPackageName=de.panstreet.politessgo
+CmcrdCheckMode=permission_and_overstay
+CmcrdServer=http://s339756819.online.de
+
+
+
+

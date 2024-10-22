@@ -20,3 +20,8 @@ rouge-memory.tmp
 # RVM/rbenv configuration files
 .ruby-version
 .ruby-gemset
+
+# myfiles for editing and testing with rackup
+ru.cmd
+rackup.out
+rouge.code-workspace
